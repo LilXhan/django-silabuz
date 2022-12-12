@@ -1,0 +1,36 @@
+{% extends 'registration/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <h2 class="text-center m-5">Inicia sesión</h2>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <form style="width: 40%;" action="" method="POST" novalidate>
+      {% csrf_token %}
+      {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        <p style="margin: 0";">No podemos encontrar una cuenta con este username. Reinténtalo o crea una cuenta nueva.</p>
+      </div>
+      {% endif %}
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="check">
+        <label class="form-check-label" for="check">Recuérdame</label>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

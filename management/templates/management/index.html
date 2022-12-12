@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mt-5">
+        <h1>Lista Salones</h1>
+        <div>
+          <a href="{% url 'create' %}" class="btn btn-primary">Crear Salon</a>
+          <a href="{% url 'create_student' %}" class="btn btn-primary">Crear Alumno</a>
+        </div>
+  </div>
+
+  <hr>
+
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th>Salon</th>
+        <th>Tutor</th>
+        <th>Entrada</th>
+        <th>Alumnos</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for classroom in classrooms %}
+      <tr>
+        <td>{{ classroom.name }}</td>
+        <td>{{ classroom.idTeacher }}</td>
+        <td>{{ classroom.start_time }}</td>
+        <td>
+          <a class="btn btn-dark" href="classroom/{{ classroom.id }}">Ver Alumnos</a>
+        </td>
+        <td>
+            <a class="btn btn-danger" href="delete/{{ classroom.id }}">Eliminar</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="list-group mt-5 d-flex justify-content-between">
+
+  </div>
+{% endblock %}
